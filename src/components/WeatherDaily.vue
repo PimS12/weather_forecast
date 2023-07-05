@@ -219,21 +219,21 @@
 
 @media screen and (max-width : 585px) {
 
-.weather-daily__title {
-  width: 100%;
-  text-align: center;
-}
+  .weather-daily__title {
+    width: 100%;
+    text-align: center;
+  }
 
-.weather-daily__widget-feed {
-  justify-content: center;
-  gap:30px;
-}
+  .weather-daily__widget-feed {
+    justify-content: center;
+    gap: 30px;
+  }
 
-.weather-daily__widget-feed__item {
-  gap: 0px;
-  width: 130px;
-  align-items: center;
-}
+  .weather-daily__widget-feed__item {
+    gap: 0px;
+    width: 130px;
+    align-items: center;
+  }
 }
 
 @media (max-width: 767px) {
