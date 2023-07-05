@@ -1,167 +1,294 @@
 <template>
-    <div class="weather__container">
-      <div class="footer__wrapper">
-        <div class="weather__title">Подробности</div>
+  <div class="weather-details">
+    <span class="weather-details__title">Подробности</span>
 
-        <div class="weather__block-footer">
-          <div class="weather__details">
-            <hr>
+    <div class="weather-details__wrapper">
+      <div class="weather-details__wrapper__data">
+        <hr>
 
-            <div class="weather__details-wrapper">
-              <div class="weather__details__item">
-                <div class="weather__item__title">По ощущениям</div>
-                <div class="weather__item__main">2°</div>
-              </div>
+        <div class="weather-details__wrapper__data__container">
 
-              <div class="weather__details__item">
-                <div class="weather__item__title">Влажность</div>
-                <div class="weather__item__main">73%</div>
-              </div>
+          <div class="weather-details__wrapper__data__container__item">
+            <span class="weather-details__wrapper__data__container__item-title">По ощущениям</span>
+            <span class="weather-details__wrapper__data__container__item-data">2°</span>
+          </div>
 
-              <div class="weather__details__item">
-                <div class="weather__item__title">Видимость</div>
-                <div class="weather__item__main">10 км</div>
-              </div>
+          <div class="weather-details__wrapper__data__container__item">
+            <span class="weather-details__wrapper__data__container__item-title">Влажность</span>
+            <span class="weather-details__wrapper__data__container__item-data">2°</span>
+          </div>
 
-              <div class="weather__details__item">
-                <div class="weather__item__title">Давление</div>
-                <div class="weather__item__main">760,00 мм</div>
-              </div>
+          <div class="weather-details__wrapper__data__container__item">
+            <span class="weather-details__wrapper__data__container__item-title">Видимость</span>
+            <span class="weather-details__wrapper__data__container__item-data">2°</span>
+          </div>
 
-              <div class="weather__details__item">
-                <div class="weather__item__title">Ветер</div>
-                <div class="weather__item__main"><img src="@/assets/wind.svg" alt=""> 4 м/с</div>
-              </div>
+          <div class="weather-details__wrapper__data__container__item">
+            <span class="weather-details__wrapper__data__container__item-title">Давление</span>
+            <span class="weather-details__wrapper__data__container__item-data">2°</span>
+          </div>
+
+          <div class="weather-details__wrapper__data__container__item">
+            <span class="weather-details__wrapper__data__container__item-title">Ветер</span>
+            <span class="weather-details__wrapper__data__container__item-data">2°</span>
+          </div>
+
+        </div>
+
+      </div>
+
+      <div class="weather-details__wrapper__rise">
+        <hr>
+
+        <div class="weather-details__wrapper__rise__container">
+
+          <div class="weather-details__wrapper__rise__container__item">
+            <span class="weather-details__wrapper__rise__container__item-title">Восход</span>
+
+            <div class="weather-details__wrapper__rise__container__item-main">
+              <div class="weather-details__wrapper__rise__container__item-main__icon"><img src="@/assets/rise.svg" alt=""></div>
+              <span class="weather-details__wrapper__rise__container__item-main__time">7:23</span>
             </div>
 
-            
           </div>
 
-          <div class="weather__rise">
-            <hr>
+          <div class="weather-details__wrapper__rise__container__item">
+            <span class="weather-details__wrapper__rise__container__item-title">Закат</span>
 
-            <div class="weather__rise-wrapper">
-              <div class="weather__rise__item">
-                <div class="weather__item__title">Восход</div>
-                <div class="weather__item__main-rise">
-                  <div class="icon"><img src="@/assets/rise.svg" alt=""></div>
-                  <div class="time">18:42</div>
-                </div>
-              </div>
+            <div class="weather-details__wrapper__rise__container__item-main">
+              <div class="weather-details__wrapper__rise__container__item-main__icon"><img src="@/assets/rise.svg" alt=""></div>
+              <span class="weather-details__wrapper__rise__container__item-main__time">18:42</span>
+            </div>
 
-              <div class="weather__rise__item">
-                <div class="weather__item__title">Закат</div>
-                <div class="weather__item__main-rise">
-                  <div class="icon"><img src="@/assets/rise.svg" alt=""></div>
-                  <div class="time">18:42</div>
-                </div>
-              </div>
-            </div> 
-          </div>
+          </div>          
         </div>
+        
       </div>
+
     </div>
+  </div>  
 </template>
 
 <script>
 
 </script>
 
-<style>
-    .weather__details {
-    width: 496px;
+<style lang="scss">
+
+    @mixin font($size, $weight, $height) {
+        font-family: Roboto;
+        font-style: normal;
+        color: #FFF;
+        
+        line-height: $height;
+        font-size: $size;
+        font-weight: $weight;
     }
 
-    .weather__rise {
-    width: 296px;
+    .weather-details {
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        margin-top: 100px;
+        gap: 8px;
+
+        &__title {
+            @include font(1.5em, 400, 130%);
+        }
+
+        hr {
+            width: 100%;
+            height: 1px;
+            border-radius: 8px;
+            opacity: 0.25;
+            background: #FFF;
+        }
+
+        &__wrapper {
+            width: 100%;
+            display: flex;
+            gap: 80px;
+
+            &__data {
+                width: 496px;
+                display: flex;
+                flex-direction: column;
+                gap: 24px;
+
+                &__container {
+                    display: flex;
+                    flex-wrap: wrap;
+                    gap: 32px 116px;
+
+                    &__item {
+                        display: flex;
+                        flex-direction: column;
+                        align-items: flex-start;
+                        gap: 16px;
+
+                        &-title {
+                            @include font(0.875em, 400, 130%);
+                        }
+
+                        &-data {
+                            @include font(1.5em, 300, 135%);
+                        }
+                    }
+                }
+            }
+
+            &__rise {
+                width: 296px;
+                display: flex;
+                flex-direction: column;
+                gap: 24px;
+
+                &__container {
+                    display: flex;
+                    flex-direction: column;
+                    gap: 24px;
+                    
+                    &__item {
+                        display: flex;
+                        flex-direction: column;
+                        gap: 8px;
+
+                        &-title {
+                            @include font(0.875em, 400, 130%);
+                        }
+
+                        &-main {
+                            display: flex;
+                            gap: 24px;
+                            align-items: center;
+
+                            &__icon {
+                              width: 100%;
+                              max-width: 48px;
+                              height: auto;
+                            }
+
+                            &__time {
+                              @include font(1.5em, 300, 135%);
+                            }
+                        }
+                    }                    
+                }
+                
+            }
+        }
     }
 
-    .weather__details hr, .weather__rise hr {
-    width: 100%;
-    height: 1px;
-    flex-shrink: 0;
-    border-radius: 8px;
-    opacity: 0.25;
-    background: #FFF;
-    
-    margin-bottom: 24px;
+    @media screen and (min-aspect-ratio: 16/9) {
+        .weather-details {
+          margin-top: 50px;
+          gap: 8px;
+
+          &__wrapper {
+              justify-content: space-between;
+              gap: 0px;
+
+              &__data {
+                  width: 626px;
+                  gap: 24px;
+
+                  &__container {
+                      flex-wrap: wrap;
+                      gap: 32px 58px;
+
+                      &__item {
+                          display: flex;
+                          flex-direction: column;
+                          align-items: flex-start;
+                          gap: 16px;
+                      }
+                  }
+              }
+
+              &__rise {
+                  width: 296px;
+                  display: flex;
+                  flex-direction: column;
+                  gap: 24px;
+
+                  &__container {
+                      display: flex;
+                      flex-direction: row;
+                      justify-content: space-between;
+                      gap: 0;
+
+                      &__item {
+                          display: flex;
+                          // flex-direction: row;
+                          gap: 8px;
+
+                          &-main {
+                              display: flex;
+                              gap: 24px;
+                              align-items: center;
+                          }
+                      }                    
+                  }
+                  
+              }
+          }
+        }
     }
 
-    .weather__details-wrapper{
-    display: flex;
-    flex-wrap: wrap;
-    gap: 32px 116px;
+    @media (max-width: 992px) {
+        .weather-details {
+            margin-top: 120px;
+            gap: 8px;
+
+            &__wrapper__data__container {
+                gap: 32px 58px;
+            }
+        }
+      
     }
 
-    .weather__details__item {
-    display: inline-flex;
-    flex-direction: column;
-    align-items: flex-start;
-    gap: 16px;
-    }
+    @media screen and (max-width : 420px) {
+      .weather-details {
+        margin-top: 80px;
 
-    .weather__item__title {
-    color: #FFF;
-    font-size: 14px;
-    font-family: Roboto;
-    font-style: normal;
-    font-weight: 400;
-    line-height: 130%;
-    }
+        &__title {
+          text-align: center;
+        }
 
-    .weather__item__main {
-    color: #FFF;
-    font-size: 24px;
-    font-family: Roboto;
-    font-style: normal;
-    font-weight: 300;
-    line-height: 135%;
-    
-    display: flex;
-    align-items: stretch;
-    gap: 10px;
-    align-self: stretch;
-    }
+        &__wrapper {
+          flex-direction: column;
+          gap : 16px;
+          
+          &__data {
+            width: 100%;
 
-    .weather__block-footer{
-    display: flex;
-    gap: 80px;
-    }
+            &__container {
+              gap: 20px 10px;
+              justify-content: center;
+              align-items: center; 
+              
+              &__item {
+                align-items: center;
+                width: 30%;                
+              }
+            }
+          }
 
-    .weather__rise__item {
-    display: inline-flex;
-    flex-direction: column;
-    align-items: flex-start;
-    gap: 8px;
-    }
+          &__rise {
+            width: 100%;
 
-    .weather__item__main-rise{
-    display: flex;
-    align-items: center;
-    gap: 24px;
-    }
+            &__container {
+              gap: 0px 20%;
+              flex-direction: row;
+              justify-content: center;
+              align-items: center;              
+            }
 
-    .weather__rise-wrapper {
-    display: flex;
-    flex-direction: column;
-    gap: 24px;
-    }
-
-    .time {
-    color: #FFF;
-    font-size: 24px;
-    font-family: Roboto;
-    font-style: normal;
-    font-weight: 300;
-    line-height: 135%;
-    }
-
-    .icon {
-    width: 48px;
-    height: 48px;
-    }
-
-    .footer__wrapper{
-    padding-top: 107px;
+            &__item-title {
+              text-align: center;
+            }
+          }
+        }
+      }
     }
 </style>
