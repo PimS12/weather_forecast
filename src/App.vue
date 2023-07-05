@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="weather-app">
     <WeatherMain/>
     <WeatherDaily/>
     <WeatherDetails/>
@@ -154,14 +154,27 @@
         font-style: normal;
         line-height: 1.2;
         color: white;
-    }
-
-    .weather {
-        min-height: 100vh;
-    }
-
-    .weather__container{
-        max-width: 1312px;
+        max-width: 1342px;
         margin: 0 auto;
+        padding: 0 15px;
     }
+
+    @media (max-width: 1342px) {
+        body {
+            max-width: 970px;
+        }
+    }
+
+    @media (max-width: 992px) {
+        body {
+            max-width: 750px;
+        }
+    }
+
+    @media (max-width: 767px) {
+        body {
+            max-width: none;
+        }
+    }
+
 </style>
