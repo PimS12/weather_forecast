@@ -1,5 +1,5 @@
 <template>
-  <div class="weather-details">
+  <div class="weather-details" v-if="selectedItem">
     <span class="weather-details__title">Подробности</span>
 
     <div class="weather-details__wrapper">
@@ -10,27 +10,27 @@
 
           <div class="weather-details__wrapper__data__container__item">
             <span class="weather-details__wrapper__data__container__item-title">По ощущениям</span>
-            <span class="weather-details__wrapper__data__container__item-data">2°</span>
+            <span class="weather-details__wrapper__data__container__item-data">{{ selectedItem.feelTemp }}</span>
           </div>
 
           <div class="weather-details__wrapper__data__container__item">
             <span class="weather-details__wrapper__data__container__item-title">Влажность</span>
-            <span class="weather-details__wrapper__data__container__item-data">2°</span>
+            <span class="weather-details__wrapper__data__container__item-data">{{ selectedItem.humidity }}</span>
           </div>
 
           <div class="weather-details__wrapper__data__container__item">
             <span class="weather-details__wrapper__data__container__item-title">Видимость</span>
-            <span class="weather-details__wrapper__data__container__item-data">2°</span>
+            <span class="weather-details__wrapper__data__container__item-data">{{ selectedItem.visibility }}</span>
           </div>
 
           <div class="weather-details__wrapper__data__container__item">
             <span class="weather-details__wrapper__data__container__item-title">Давление</span>
-            <span class="weather-details__wrapper__data__container__item-data">2°</span>
+            <span class="weather-details__wrapper__data__container__item-data">{{ selectedItem.pressure }}</span>
           </div>
 
           <div class="weather-details__wrapper__data__container__item">
             <span class="weather-details__wrapper__data__container__item-title">Ветер</span>
-            <span class="weather-details__wrapper__data__container__item-data">2°</span>
+            <span class="weather-details__wrapper__data__container__item-data">{{ selectedItem.windSpeed }}</span>
           </div>
 
         </div>
@@ -46,9 +46,9 @@
             <span class="weather-details__wrapper__rise__container__item-title">Восход</span>
 
             <div class="weather-details__wrapper__rise__container__item-main">
-              <div class="weather-details__wrapper__rise__container__item-main__icon"><img src="@/assets/rise.svg" alt="">
+              <div class="weather-details__wrapper__rise__container__item-main__icon"><img src="@/assets/sunrise.svg" alt="">
               </div>
-              <span class="weather-details__wrapper__rise__container__item-main__time">7:23</span>
+              <span class="weather-details__wrapper__rise__container__item-main__time">{{ selectedItem.sunrise }}</span>
             </div>
 
           </div>
@@ -57,9 +57,9 @@
             <span class="weather-details__wrapper__rise__container__item-title">Закат</span>
 
             <div class="weather-details__wrapper__rise__container__item-main">
-              <div class="weather-details__wrapper__rise__container__item-main__icon"><img src="@/assets/rise.svg" alt="">
+              <div class="weather-details__wrapper__rise__container__item-main__icon"><img src="@/assets/sunset.svg" alt="">
               </div>
-              <span class="weather-details__wrapper__rise__container__item-main__time">18:42</span>
+              <span class="weather-details__wrapper__rise__container__item-main__time">{{ selectedItem.sunset }}</span>
             </div>
 
           </div>
@@ -72,7 +72,15 @@
 </template>
 
 <script>
-
+export default {
+  name: 'WeatherDetails',
+  props: {
+    selectedItem: {
+      type: Object, // Ожидаем объект с данными о выбранном элементе
+      required: true
+    }
+  }
+};
 </script>
 
 <style lang="scss">
@@ -190,7 +198,7 @@
       gap: 0px;
 
       &__data {
-        width: 626px;
+        width: 656px;
         gap: 24px;
 
         &__container {

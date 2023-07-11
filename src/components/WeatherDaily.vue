@@ -3,90 +3,46 @@
     <span class="weather-daily__title">По дням</span>
 
     <div class="weather-daily__widget-feed">
-      <div class="weather-daily__widget-feed__item">
-        <span class="weather-daily__widget-feed__item-day">Сегодня</span>
-
-        <div class="weather-daily__widget-feed__item-icon"><img src="@/assets/sun.svg" alt=""></div>
-
-        <div class="weather-daily__widget-feed__item-temp">
-          <span class="weather-daily__widget-feed__item-temp__max">4°</span>
-          <span class="weather-daily__widget-feed__item-temp__min">3°</span>
-        </div>
-      </div>
-
-      <div class="weather-daily__widget-feed__item">
-        <span class="weather-daily__widget-feed__item-day">Сегодня</span>
-
-        <div class="weather-daily__widget-feed__item-icon"><img src="@/assets/sun.svg" alt=""></div>
-
-        <div class="weather-daily__widget-feed__item-temp">
-          <span class="weather-daily__widget-feed__item-temp__max">4°</span>
-          <span class="weather-daily__widget-feed__item-temp__min">3°</span>
-        </div>
-      </div>
-
-      <div class="weather-daily__widget-feed__item">
-        <span class="weather-daily__widget-feed__item-day">Сегодня</span>
-
-        <div class="weather-daily__widget-feed__item-icon"><img src="@/assets/sun.svg" alt=""></div>
-
-        <div class="weather-daily__widget-feed__item-temp">
-          <span class="weather-daily__widget-feed__item-temp__max">4°</span>
-          <span class="weather-daily__widget-feed__item-temp__min">3°</span>
-        </div>
-      </div>
-
-      <div class="weather-daily__widget-feed__item">
-        <span class="weather-daily__widget-feed__item-day">Сегодня</span>
-
-        <div class="weather-daily__widget-feed__item-icon"><img src="@/assets/sun.svg" alt=""></div>
-
-        <div class="weather-daily__widget-feed__item-temp">
-          <span class="weather-daily__widget-feed__item-temp__max">4°</span>
-          <span class="weather-daily__widget-feed__item-temp__min">3°</span>
-        </div>
-      </div>
-
-      <div class="weather-daily__widget-feed__item">
-        <span class="weather-daily__widget-feed__item-day">Сегодня</span>
-
-        <div class="weather-daily__widget-feed__item-icon"><img src="@/assets/sun.svg" alt=""></div>
-
-        <div class="weather-daily__widget-feed__item-temp">
-          <span class="weather-daily__widget-feed__item-temp__max">4°</span>
-          <span class="weather-daily__widget-feed__item-temp__min">3°</span>
-        </div>
-      </div>
-
-      <div class="weather-daily__widget-feed__item">
-        <span class="weather-daily__widget-feed__item-day">Сегодня</span>
-
-        <div class="weather-daily__widget-feed__item-icon"><img src="@/assets/sun.svg" alt=""></div>
-
-        <div class="weather-daily__widget-feed__item-temp">
-          <span class="weather-daily__widget-feed__item-temp__max">4°</span>
-          <span class="weather-daily__widget-feed__item-temp__min">3°</span>
-        </div>
-      </div>
-
-      <div class="weather-daily__widget-feed__item">
-        <span class="weather-daily__widget-feed__item-day">Сегодня</span>
-
-        <div class="weather-daily__widget-feed__item-icon"><img src="@/assets/sun.svg" alt=""></div>
-
-        <div class="weather-daily__widget-feed__item-temp">
-          <span class="weather-daily__widget-feed__item-temp__max">4°</span>
-          <span class="weather-daily__widget-feed__item-temp__min">3°</span>
-        </div>
-      </div>
-
+      <weather-day v-for="(dayWeather, index) in weatherData" :key="index" :dayWeather="dayWeather" @qwe="log"
+        @click="selectItem(dayWeather)"></weather-day>
     </div>
   </div>
 </template>
 
 <script>
+// import axios from 'axios';
+import WeatherDay from '@/components/WeatherDay.vue';
 
+export default {
+  name: 'WeatherDaily',
+  components: {
+    WeatherDay
+  },
+  props: {
+    weatherData: {
+      type: Array,
+      required: true
+    }
+  },
+  methods: {
+    selectItem(selectedItem) {
+      // Сбросить выбор для всех элементов
+      this.weatherData.forEach(item => {
+        item.selected = false;
+      });
+
+      // Установить выбранный элемент
+      selectedItem.selected = true;
+      this.$emit('item-selected', selectedItem);
+    },
+  },
+
+};
 </script>
+
+
+
+
 
 <style lang="scss">
 @mixin font($size, $weight, $height) {
@@ -125,6 +81,11 @@
       width: 160px;
 
       &:hover {
+        border-radius: 16px;
+        background: rgba(255, 255, 255, 0.25);
+      }
+
+      &.selected {
         border-radius: 16px;
         background: rgba(255, 255, 255, 0.25);
       }

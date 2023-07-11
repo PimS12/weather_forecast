@@ -3,16 +3,24 @@
         <span class="main-widget__city">Москва</span>
 
         <div class="main-widget__weather">
-            <div class="main-widget__weather-icon"><img src="@/assets/sun.svg" alt=""></div>
-            <span class="main-widget__weather-temp">4°</span>
+            <div class="main-widget__weather-icon"><img :src="currentWeather.icon" alt=""></div>
+            <span class="main-widget__weather-temp">{{ currentWeather.temperature }}°</span>
         </div>
 
-        <span class="main-widget__status">Солнечно</span>
+        <span class="main-widget__status">{{ currentWeather.status }}</span>
     </div>
 </template>
 
 <script>
-
+export default {
+    name: 'WeatherMain',
+    props: {
+        currentWeather: {
+            type: Array,
+            required: true
+        }
+    }
+}
 </script>
 
 <style lang="scss">
