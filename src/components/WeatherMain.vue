@@ -1,63 +1,83 @@
 <template>
-    <div class="weather__container">
-      <div class="weather__block-main">
-        <div class="weather__city">Москва</div>
+    <div class="main-widget">
+        <span class="main-widget__city">Москва</span>
 
-        <div class="weather__info">
-          <div class="weather__icon"><img src="@/assets/sun.svg" alt=""></div>
-          <div class="weather__temp-now">--°</div>        
+        <div class="main-widget__weather">
+            <div class="main-widget__weather-icon"><img :src="currentWeather.icon" alt=""></div>
+            <span class="main-widget__weather-temp">{{ currentWeather.temperature }}°</span>
         </div>
 
-        <div class="weather__status">Солнечно</div>
-      </div>    
+        <span class="main-widget__status">{{ currentWeather.status }}</span>
     </div>
 </template>
 
 <script>
-
+export default {
+    name: 'WeatherMain',
+    props: {
+        currentWeather: {
+            type: Array,
+            required: true
+        }
+    }
+}
 </script>
 
-<style>
-    .weather__block-main {
-    padding-top: 64px;
+<style lang="scss">
+@mixin font($size, $weight, $height) {
+    font-family: Roboto;
+    font-style: normal;
+    color: #FFF;
+
+    line-height: $height;
+    font-size: $size;
+    font-weight: $weight;
+}
+
+.main-widget {
+    width: 100%;
     display: flex;
     flex-direction: column;
-    flex-wrap: wrap;
-    justify-content: center;
     align-items: center;
+    margin-top: 60px;
+    gap: 8px;
+
+    &__city {
+        @include font(2.25em, 500, 130%);
     }
 
-    .weather__info {
-    display: inline-flex;
-    justify-content: center;
-    align-items: center;
-    gap: 24px;
+    &__weather {
+        display: inline-flex;
+        justify-content: center;
+        align-items: center;
+        gap: 24px;
+
+        &-icon {
+            width: 100%;
+            max-width: 100px;
+            height: auto;
+
+        }
+
+        &-temp {
+            @include font(6em, 300, 130%);
+
+        }
     }
 
-    .weather__city {
-    color: #FFF;
-    font-size: 36px;
-    font-family: Roboto;
-    font-style: normal;
-    font-weight: 500;
-    line-height: 130%;
+    &__status {
+        @include font(1.5em, 400, 130%);
     }
+}
 
-    .weather__temp-now {
-    color: #FFF;
-    font-size: 96px;
-    font-family: Roboto;
-    font-style: normal;
-    font-weight: 300;
-    line-height: 130%;
+@media screen and (min-aspect-ratio: 16/9) {
+    .main-widget {
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        margin-top: 30px;
+        gap: 8px;
     }
-
-    .weather__status {
-    color: #FFF;
-    font-size: 24px;
-    font-family: Roboto;
-    font-style: normal;
-    font-weight: 400;
-    line-height: 130%;
-    }
+}
 </style>
